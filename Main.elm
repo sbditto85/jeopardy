@@ -51,17 +51,37 @@ type Msg
 initModel =
     let
         columns : List (ID, Column)
-        columns = [ (0, { answers = [ (0, { answer = "the game im not making"
-                                          , question = "dont know anything"
+        columns = [ (0, { answers = [ (0, { answer = "the game im not making 0.0"
+                                          , question = "dont know anything 0.0"
                                           , points = 100
+                                          , show = True
+                                          })
+                                    , (1, { answer = "the game im not making 0.1"
+                                          , question = "dont know anything 0.1"
+                                          , points = 200
+                                          , show = True
+                                          })
+                                    , (2, { answer = "the game im not making 0.2"
+                                          , question = "dont know anything 0.2"
+                                          , points = 300
                                           , show = True
                                           })
                                     ]
                         , label = "Init"
                         })
-                  , (1, { answers = [ (0, { answer = "the game im not making 2"
-                                          , question = "dont know anything 2"
+                  , (1, { answers = [ (0, { answer = "the game im not making 1.0"
+                                          , question = "dont know anything 1.0"
                                           , points = 100
+                                          , show = True
+                                          })
+                                    , (1, { answer = "the game im not making 1.1"
+                                          , question = "dont know anything 1.1"
+                                          , points = 200
+                                          , show = True
+                                          })
+                                    , (2, { answer = "the game im not making 1.2"
+                                          , question = "dont know anything 1.2"
+                                          , points = 300
                                           , show = True
                                           })
                                     ]
