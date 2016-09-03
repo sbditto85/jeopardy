@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Jeopardy</title>
+        <script type="text/javascript" src="main.js"></script>
+        <style>
+         body {
+             background-color: blue;
+         }
+         h1 {
+             width: 900px;
+             margin: auto;
+             color: #fff;
+             text-align: center;
+         }
+         ul {
+             margin: 0;
+             padding: 0;
+             list-style: none;
+         }
+         #answer, #question {
+             width: 900px;
+             text-align: center;
+             color: #fff;
+             font-size: 50px;
+             margin: auto;
+             margin-top: 100px;
+         }
+         ul.colContainer {
+             width: 900px;
+             margin: auto;
+         }
+         ul.colContainer > li {
+             display: inline-block;
+         }
+         ul.colContainer h2 {
+             text-align: center;
+             color: yellow;
+         }
+         li.answer {
+             padding: 20px;
+             margin: 5px;
+             color: #fff;
+             background-color: blue;
+             width: 150px;
+             height: 80px;
+             font-size: 40px;
+             text-align: center;
+             padding-top: 60px;
+             border: 1px solid #fff;
+         }
+         li.answer.done {
+             color: blue;
+         }
+         ul.teamContainer {
+             position: absolute;
+             right: 150px;
+             top: 50px;
+             color: #fff;
+         }
+         ul.teamContainer li {
+             display: inline-block;
+             margin: 10px;
+         }
+         ul.teamContainer li span {
+             font-size: 35px;
+         }
+         li.myturn > h2 {
+             color: yellow;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="jeopardy"></div>
+        <script type="text/javascript">
+         var elem = document.getElementById("jeopardy");
+         var elm = Elm.Main.embed(elem);
+        </script>
+    </body>
+</html>

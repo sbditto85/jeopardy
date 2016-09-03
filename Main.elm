@@ -5,6 +5,7 @@ import Html exposing (..)
 import Html.App as App
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
+import Time exposing (Time)
 
 {- TYPES -}
 
@@ -21,7 +22,9 @@ type alias Column =
 
 type alias Answer =
     { answer : String
+    , hint : String
     , question : String
+    , context : String
     , points : Points
     , show : Bool
     }
@@ -31,11 +34,21 @@ type alias Team =
     , score : Int
     }
 
+type TimerReason
+    = RanOut
+    | Answered
+    
+type Timer
+    = Timing Time
+    | Done TimerReason
+
 type alias Model =
     { columns : List (ID, Column)
     , teams : List (ID, Team)
     , displayAnswer : Maybe (Answer, ID, ID)
+    , showQuestion : Bool
     , currentTeam : ID
+    , timer : Timer
     }
 
 type Outcome
@@ -46,54 +59,172 @@ type Msg
     = NoOp
     | ShowAnswer Answer ID ID
     | RecordResponse Answer ID ID Outcome
+    | ShowQuestion
+    | HeartBeat Time
 
 {- INIT -}
 initModel =
     let
         columns : List (ID, Column)
-        columns = [ (0, { answers = [ (0, { answer = "the game im not making 0.0"
-                                          , question = "dont know anything 0.0"
+        columns = [ (0, { answers = [ (0, { answer = "I broke my bow then made a new one without loosing faith."
+                                          , hint = "1 nephi"
+                                          , question = "Who is Nephi?"
+                                          , context = "1 nephi"
                                           , points = 100
                                           , show = True
                                           })
                                     , (1, { answer = "the game im not making 0.1"
+                                          , hint = "hint"
                                           , question = "dont know anything 0.1"
+                                          , context = ""
                                           , points = 200
                                           , show = True
                                           })
                                     , (2, { answer = "the game im not making 0.2"
+                                          , hint = "hint"
                                           , question = "dont know anything 0.2"
+                                          , context = ""
                                           , points = 300
                                           , show = True
                                           })
+                                    , (3, { answer = "the game im not making 0.3"
+                                          , hint = "hint"
+                                          , question = "dont know anything 0.3"
+                                          , context = ""
+                                          , points = 400
+                                          , show = True
+                                          })
+                                    , (4, { answer = "the game im not making 0.4"
+                                          , hint = "hint"
+                                          , question = "dont know anything 0.4"
+                                          , context = ""
+                                          , points = 500
+                                          , show = True
+                                          })
                                     ]
-                        , label = "Init"
+                        , label = "Nephites"
                         })
                   , (1, { answers = [ (0, { answer = "the game im not making 1.0"
+                                          , hint = "hint"
                                           , question = "dont know anything 1.0"
+                                          , context = ""
                                           , points = 100
                                           , show = True
                                           })
                                     , (1, { answer = "the game im not making 1.1"
+                                          , hint = "hint"
                                           , question = "dont know anything 1.1"
+                                          , context = ""
                                           , points = 200
                                           , show = True
                                           })
                                     , (2, { answer = "the game im not making 1.2"
+                                          , hint = "hint"
                                           , question = "dont know anything 1.2"
+                                          , context = ""
                                           , points = 300
                                           , show = True
                                           })
+                                    , (3, { answer = "the game im not making 1.3"
+                                          , hint = "hint"
+                                          , question = "dont know anything 1.3"
+                                          , context = ""
+                                          , points = 400
+                                          , show = True
+                                          })
+                                    , (4, { answer = "the game im not making 1.4"
+                                          , hint = "hint"
+                                          , question = "dont know anything 1.4"
+                                          , context = ""
+                                          , points = 500
+                                          , show = True
+                                          })
                                     ]
-                        , label = "Init 2"
+                        , label = "Lamanites"
+                        })
+                  , (2, { answers = [ (0, { answer = "the game im not making 2.0"
+                                          , hint = "hint"
+                                          , question = "dont know anything 2.0"
+                                          , context = ""
+                                          , points = 100
+                                          , show = True
+                                          })
+                                    , (1, { answer = "the game im not making 2.1"
+                                          , hint = "hint"
+                                          , question = "dont know anything 2.1"
+                                          , context = ""
+                                          , points = 200
+                                          , show = True
+                                          })
+                                    , (2, { answer = "the game im not making 2.2"
+                                          , hint = "hint"
+                                          , question = "dont know anything 2.2"
+                                          , context = ""
+                                          , points = 300
+                                          , show = True
+                                          })
+                                    , (3, { answer = "the game im not making 2.3"
+                                          , hint = "hint"
+                                          , question = "dont know anything 2.3"
+                                          , context = ""
+                                          , points = 400
+                                          , show = True
+                                          })
+                                    , (4, { answer = "the game im not making 2.4"
+                                          , hint = "hint"
+                                          , question = "dont know anything 2.4"
+                                          , context = ""
+                                          , points = 500
+                                          , show = True
+                                          })
+                                    ]
+                        , label = "Batman"
+                        })
+                  , (3, { answers = [ (0, { answer = "the game im not making 3.0"
+                                          , hint = "hint"
+                                          , question = "dont know anything 3.0"
+                                          , context = ""
+                                          , points = 100
+                                          , show = True
+                                          })
+                                    , (1, { answer = "the game im not making 3.1"
+                                          , hint = "hint"
+                                          , question = "dont know anything 3.1"
+                                          , context = ""
+                                          , points = 200
+                                          , show = True
+                                          })
+                                    , (2, { answer = "the game im not making 3.2"
+                                          , hint = "hint"
+                                          , question = "dont know anything 3.2"
+                                          , context = ""
+                                          , points = 300
+                                          , show = True
+                                          })
+                                    , (3, { answer = "the game im not making 3.3"
+                                          , hint = "hint"
+                                          , question = "dont know anything 3.3"
+                                          , context = ""
+                                          , points = 400
+                                          , show = True
+                                          })
+                                    , (4, { answer = "the game im not making 3.4"
+                                          , hint = "hint"
+                                          , question = "dont know anything 3.4"
+                                          , context = ""
+                                          , points = 500
+                                          , show = True
+                                          })
+                                    ]
+                        , label = "Free"
                         })
                   ]
 
         teams : List (ID, Team)
-        teams = [ (0, { name = "Team 1"
+        teams = [ (0, { name = "Boys"
                   , score = 0
                   })
-                , (1, { name = "Team 2"
+                , (1, { name = "Girls"
                   , score = 0
                   })
                 ]
@@ -101,18 +232,28 @@ initModel =
          { columns = columns
          , teams = teams
          , displayAnswer = Nothing
+         , showQuestion = False
          , currentTeam = 0
-         }
+         , timer = Timing (Time.second * 0)
+         } ! []
 
 {- UPDATE -}
-update : Msg -> Model -> Model
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     case msg of
         NoOp ->
-            model
+            model ! []
 
         ShowAnswer answer cId aId ->
-            { model | displayAnswer = Just (answer, cId, aId) }
+            { model | displayAnswer = Just (answer, cId, aId), timer = Timing (Time.second * 60) } ! []
+
+        ShowQuestion ->
+            case model.timer of
+                Done RanOut ->
+                    { model | showQuestion = True, timer = Done RanOut } ! []
+
+                _ ->
+                    { model | showQuestion = True, timer = Done Answered } ! []
 
         RecordResponse answer cId aId outcome ->
             let
@@ -146,10 +287,20 @@ update msg model =
             in
                 case outcome of
                     Right ->
-                        { model | displayAnswer = Nothing, columns = columns', currentTeam = currentTeam', teams = teamsWithPoints }
+                        { model | showQuestion = False, displayAnswer = Nothing, columns = columns', currentTeam = currentTeam', teams = teamsWithPoints } ! []
 
                     Wrong ->
-                        { model | displayAnswer = Nothing, columns = columns', currentTeam = currentTeam' }
+                        { model | showQuestion = False, displayAnswer = Nothing, columns = columns', currentTeam = currentTeam' } ! []
+
+        HeartBeat time ->
+            case model.timer of
+                Timing time ->
+                    if time > Time.second * 0 then
+                        { model | timer = (Timing (time - Time.second))} ! []
+                    else
+                        { model | timer = Done RanOut } ! []
+                Done _ ->
+                    model ! []
 
 {- VIEW -}
 view : Model -> Html Msg
@@ -157,34 +308,76 @@ view model =
     let
         grid =
             div []
-                [ h1 [] [ text "Jeporady" ]
+                [ h1 [] [ text "Jeopardy" ]
                 , viewColumns model.columns
-                , viewTeams model.teams
+                ,  viewTeams model.currentTeam model.teams
                 ]
 
         answer ans cId aId =
-            div []
-                [ text ans.answer
-                , input [ type' "hidden"
-                        , name "question"
-                        , value (Debug.log "question" ans.question)
-                        ] []
-                , button [ type' "button"
-                         , onClick (RecordResponse ans cId aId Right)
-                         ] [ text "Right" ]
-                , button [ type' "button"
-                         , onClick (RecordResponse ans cId aId Wrong)
-                         ] [ text "Wrong" ]
-                ]
-                      
+            let
+                showAnswer =
+                    div [ id "answer" ]
+                        [ text ans.answer
+                        , br [] []
+                        , button [ type' "button"
+                                 , onClick ShowQuestion
+                                 ] [ text "Show Question" ]
+                        , viewTimer model
+                        ] 
+
+                showQuestion =
+                    let
+                        buttons =
+                            case model.timer of
+                                Done RanOut ->
+                                    [ button [ type' "button"
+                                             , onClick (RecordResponse ans cId aId Wrong)
+                                             ] [ text "To slow" ]
+                                    ]
+
+                                _ ->
+                                    [ button [ type' "button"
+                                             , onClick (RecordResponse ans cId aId Right)
+                                             ] [ text "Right" ]
+                                    , button [ type' "button"
+                                             , onClick (RecordResponse ans cId aId Wrong)
+                                             ] [ text "Wrong" ]
+                                    ]
+                    in
+                        div [ id "question" ]
+                            ([ text ans.question
+                            , br [] []
+                            , text ans.context
+                            , br [] []
+                            ] ++ buttons)
+                    
+            in
+                if model.showQuestion then
+                    showQuestion
+                else
+                    showAnswer
+                    
     in
         case model.displayAnswer of
             Just (a, cId, aId) ->
-                answer a cId aId
+                div [] [ answer a cId aId
+                       -- , text (toString model)
+                       ]
 
             Nothing ->
-                grid
+                div [] [ grid
+                       -- , text (toString model)
+                       ]
 
+viewTimer : Model -> Html Msg
+viewTimer model =
+    case model.timer of
+        Timing time ->
+            div [ id "timer" ] [ text (toString (Time.inSeconds time)) ]
+
+        Done _ ->
+            div [ id "timer" ] [ text "... ran out of time." ]
+                    
 viewColumns : List (ID, Column) -> Html Msg
 viewColumns columns =
     let
@@ -192,9 +385,12 @@ viewColumns columns =
             let
                 answerToHtml (aId, answer) =
                     if answer.show then
-                        li [ onClick (ShowAnswer answer cId aId) ] [ text (toString answer.points) ]
+                        li [ onClick (ShowAnswer answer cId aId)
+                           , class "answer" 
+                           ] [ text (toString answer.points) ]
                     else
-                        li [ ] [ text "" ]
+                        li [ class "answer done"
+                           ] [ text (toString answer.points) ]
                 
                 answers =
                     col.answers
@@ -213,14 +409,14 @@ viewColumns columns =
     in
         ul [ class "colContainer" ] cols
 
-viewTeams : List (ID, Team) -> Html Msg
-viewTeams teams =
+viewTeams : ID -> List (ID, Team) -> Html Msg
+viewTeams currentTeam teams =
     let
         teamToHtml : (ID, Team) -> Html Msg
         teamToHtml (id, team) =
-            li []
+            li [ classList [("myturn", currentTeam == id)] ]
                 [ h2 [] [ text team.name ]
-                , text (toString team.score)
+                , span [ class "score" ] [ text (toString team.score) ]
                 ]
 
         teamsHtml : List (Html Msg)
@@ -231,10 +427,16 @@ viewTeams teams =
         ul [ class "teamContainer" ] teamsHtml
 
 
+{- SUBSCRIPTIONS -}
+heartbeat : Model -> Sub Msg
+heartbeat model =
+    Time.every Time.second HeartBeat
+
 {- MAIN -}
 main =
-    App.beginnerProgram { model = initModel
-                     , view = view
-                     , update = update
-                     }
+    App.program { init = initModel
+                , view = view
+                , update = update
+                , subscriptions = heartbeat
+                }
     
