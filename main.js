@@ -8346,6 +8346,269 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
+var _user$project$Jeopardy_Types$Column = F2(
+	function (a, b) {
+		return {answers: a, label: b};
+	});
+var _user$project$Jeopardy_Types$Answer = F6(
+	function (a, b, c, d, e, f) {
+		return {answer: a, hint: b, question: c, context: d, points: e, show: f};
+	});
+var _user$project$Jeopardy_Types$Team = F2(
+	function (a, b) {
+		return {name: a, score: b};
+	});
+var _user$project$Jeopardy_Types$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {columns: a, teams: b, displayAnswer: c, showQuestion: d, currentTeam: e, timer: f};
+	});
+var _user$project$Jeopardy_Types$Answered = {ctor: 'Answered'};
+var _user$project$Jeopardy_Types$RanOut = {ctor: 'RanOut'};
+var _user$project$Jeopardy_Types$Done = function (a) {
+	return {ctor: 'Done', _0: a};
+};
+var _user$project$Jeopardy_Types$Timing = function (a) {
+	return {ctor: 'Timing', _0: a};
+};
+var _user$project$Jeopardy_Types$Wrong = {ctor: 'Wrong'};
+var _user$project$Jeopardy_Types$Right = {ctor: 'Right'};
+var _user$project$Jeopardy_Types$HeartBeat = function (a) {
+	return {ctor: 'HeartBeat', _0: a};
+};
+var _user$project$Jeopardy_Types$ShowQuestion = {ctor: 'ShowQuestion'};
+var _user$project$Jeopardy_Types$RecordResponse = F4(
+	function (a, b, c, d) {
+		return {ctor: 'RecordResponse', _0: a, _1: b, _2: c, _3: d};
+	});
+var _user$project$Jeopardy_Types$ShowAnswer = F3(
+	function (a, b, c) {
+		return {ctor: 'ShowAnswer', _0: a, _1: b, _2: c};
+	});
+var _user$project$Jeopardy_Types$NoOp = {ctor: 'NoOp'};
+
+var _user$project$Jeopardy_Init$initModel = function () {
+	var teams = _elm_lang$core$Native_List.fromArray(
+		[
+			{
+			ctor: '_Tuple2',
+			_0: 0,
+			_1: {name: 'Team 1', score: 0}
+		},
+			{
+			ctor: '_Tuple2',
+			_0: 1,
+			_1: {name: 'Team 2', score: 0}
+		}
+		]);
+	var columns = _elm_lang$core$Native_List.fromArray(
+		[
+			{
+			ctor: '_Tuple2',
+			_0: 0,
+			_1: {
+				answers: _elm_lang$core$Native_List.fromArray(
+					[
+						{
+						ctor: '_Tuple2',
+						_0: 0,
+						_1: {answer: 'The bread helps us remember this', hint: '3 Nephi 18', question: 'What is Jesus Christ\'s Body', context: '3 Nephi 18:7', points: 100, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 1,
+						_1: {answer: 'The water helps us remember this', hint: '3 Nephi 18', question: 'What is Jesus Christ\'s blood (shed for us)?', context: '3 Nephi 18:11', points: 200, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 2,
+						_1: {answer: 'Our promise when we take the sacrament', hint: '3 Nephi 18', question: 'What is that we always remember Jesus Christ?', context: '3 Nephi 18:7,11', points: 300, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 3,
+						_1: {answer: 'God\'s promise when we take the sacrament', hint: '3 Nephi 18', question: 'What is that we will always have The Spirit with us?', context: '3 Nephi 18:7,11', points: 400, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 4,
+						_1: {answer: 'What we are witnessing to God when we take the sacrement', hint: '3 Nephi 18', question: 'What is that we are willing to do as God has commanded?', context: '3 Nephi 18:10', points: 500, show: true}
+					}
+					]),
+				label: A2(
+					_elm_lang$html$Html$span,
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text('Sacrament'),
+							A2(
+							_elm_lang$html$Html$br,
+							_elm_lang$core$Native_List.fromArray(
+								[]),
+							_elm_lang$core$Native_List.fromArray(
+								[])),
+							_elm_lang$html$Html$text('Promises')
+						]))
+			}
+		},
+			{
+			ctor: '_Tuple2',
+			_0: 1,
+			_1: {
+				answers: _elm_lang$core$Native_List.fromArray(
+					[
+						{
+						ctor: '_Tuple2',
+						_0: 0,
+						_1: {answer: 'What Jesus Christ asked his disciples to bring forth', hint: '3 Nephi 18', question: 'What is bread and wine?', context: '3 Nephi 18:1', points: 100, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 1,
+						_1: {answer: 'What Jesus Christ did with the bread', hint: '3 Nephi 18', question: 'What is he broke it, blessed it, and gave it to his disciples and the people?', context: '3 Nephi 18:3-4', points: 200, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 2,
+						_1: {answer: 'What Jesus Christ did with the wine', hint: '3 Nephi 18', question: 'What is he blessed it, then passed it around for his disciples and the people to drink?', context: '3 Nephi 18 8-9', points: 300, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 3,
+						_1: {answer: 'What must happen before you can administer the sacrament', hint: '3 Nephi 18', question: 'What is be ordained?', context: '3 Nephi 18:5', points: 400, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 4,
+						_1: {answer: 'Who we make covenants with when we take the sacrement', hint: '3 Nephi 18', question: 'Who is the Father?', context: '3 Nephi 18:7', points: 500, show: true}
+					}
+					]),
+				label: A2(
+					_elm_lang$html$Html$span,
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text('Sacrament')
+						]))
+			}
+		},
+			{
+			ctor: '_Tuple2',
+			_0: 2,
+			_1: {
+				answers: _elm_lang$core$Native_List.fromArray(
+					[
+						{
+						ctor: '_Tuple2',
+						_0: 0,
+						_1: {answer: 'The prophet that told the Nephites of the signs of Christ\'s birth', hint: '3 Nephi 1:5', question: 'Samuel the Lamanite', context: '3 Nephi 1:5', points: 100, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 1,
+						_1: {answer: 'The reason that Jesus Christ gave that people could be healed', hint: '3 Nephi 17', question: 'What is Faith?', context: '3 Nephi 17:8', points: 200, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 2,
+						_1: {answer: 'They way Jesus Christ showed that he loved the children', hint: '3 Nephi 17', question: 'What is he took them and blessed them each one?', context: '3 Nephi 17:21', points: 300, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 3,
+						_1: {answer: 'This happened to some of the people that saw the sign (Bad)', hint: '3 Nephi 2:1-2', question: 'They stoped believing, as if they imagined it or it didn\'t happen', context: '3 Nephi 2:1-2', points: 400, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 4,
+						_1: {answer: 'The day before Chirst\'s birth what did Nephi do', hint: '3 Nephi 1:10-13', question: 'Prayed all day', context: '3 Nephi 1:12', points: 500, show: true}
+					}
+					]),
+				label: A2(
+					_elm_lang$html$Html$span,
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text('Review')
+						]))
+			}
+		},
+			{
+			ctor: '_Tuple2',
+			_0: 3,
+			_1: {
+				answers: _elm_lang$core$Native_List.fromArray(
+					[
+						{
+						ctor: '_Tuple2',
+						_0: 0,
+						_1: {answer: 'your favorite Book of Mormon story', hint: 'this is your fav, you tell us', question: '(you choose)', context: '', points: 100, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 1,
+						_1: {answer: 'I was very rebelious leading many away from the church, until and angel came to visit me and then I became a missionary', hint: 'Mosiah 27', question: 'Alma the younger', context: 'Mosiah 27', points: 200, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 2,
+						_1: {answer: 'what Nephi, son of Lehi, said when asked to get the plates of brass', hint: '1 Nephi 3', question: 'I will go and do the things which the Lord hath commanded, for I know the Lord doesn\'t give a commandment that he doesn\'t make a way to do', context: '1 Nephi 3:7', points: 300, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 3,
+						_1: {answer: 'I asked God to touch some stones so that we could have light in our boats', hint: 'Ether 3', question: 'The brother of Jared', context: 'Ether 3', points: 400, show: true}
+					},
+						{
+						ctor: '_Tuple2',
+						_0: 4,
+						_1: {answer: 'the way we know the Book of Mormon is true', hint: 'Moroni 10', question: 'What is read, sincerely pray, and the Holy Ghost will tell you?', context: 'Moroni 10:3-5', points: 500, show: true}
+					}
+					]),
+				label: A2(
+					_elm_lang$html$Html$span,
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text('Random'),
+							A2(
+							_elm_lang$html$Html$br,
+							_elm_lang$core$Native_List.fromArray(
+								[]),
+							_elm_lang$core$Native_List.fromArray(
+								[])),
+							_elm_lang$html$Html$text('BoM'),
+							A2(
+							_elm_lang$html$Html$br,
+							_elm_lang$core$Native_List.fromArray(
+								[]),
+							_elm_lang$core$Native_List.fromArray(
+								[])),
+							_elm_lang$html$Html$text('scriptures')
+						]))
+			}
+		}
+		]);
+	return A2(
+		_elm_lang$core$Platform_Cmd_ops['!'],
+		{
+			columns: columns,
+			teams: teams,
+			displayAnswer: _elm_lang$core$Maybe$Nothing,
+			showQuestion: false,
+			currentTeam: 0,
+			timer: _user$project$Jeopardy_Types$Timing(_elm_lang$core$Time$second * 0)
+		},
+		_elm_lang$core$Native_List.fromArray(
+			[]));
+}();
+
+var _user$project$Main$heartbeat = function (model) {
+	return A2(_elm_lang$core$Time$every, _elm_lang$core$Time$second, _user$project$Jeopardy_Types$HeartBeat);
+};
 var _user$project$Main$viewTeams = F2(
 	function (currentTeam, teams) {
 		var teamToHtml = function (_p0) {
@@ -8397,405 +8660,25 @@ var _user$project$Main$viewTeams = F2(
 				]),
 			teamsHtml);
 	});
-var _user$project$Main$viewTimer = function (model) {
-	var _p3 = model.timer;
-	if (_p3.ctor === 'Timing') {
-		return A2(
-			_elm_lang$html$Html$div,
-			_elm_lang$core$Native_List.fromArray(
-				[
-					_elm_lang$html$Html_Attributes$id('timer')
-				]),
-			_elm_lang$core$Native_List.fromArray(
-				[
-					_elm_lang$html$Html$text(
-					_elm_lang$core$Basics$toString(
-						_elm_lang$core$Time$inSeconds(_p3._0)))
-				]));
-	} else {
-		return A2(
-			_elm_lang$html$Html$div,
-			_elm_lang$core$Native_List.fromArray(
-				[
-					_elm_lang$html$Html_Attributes$id('timer')
-				]),
-			_elm_lang$core$Native_List.fromArray(
-				[
-					_elm_lang$html$Html$text('... ran out of time.')
-				]));
-	}
-};
-var _user$project$Main$Column = F2(
-	function (a, b) {
-		return {answers: a, label: b};
-	});
-var _user$project$Main$Answer = F6(
-	function (a, b, c, d, e, f) {
-		return {answer: a, hint: b, question: c, context: d, points: e, show: f};
-	});
-var _user$project$Main$Team = F2(
-	function (a, b) {
-		return {name: a, score: b};
-	});
-var _user$project$Main$Model = F6(
-	function (a, b, c, d, e, f) {
-		return {columns: a, teams: b, displayAnswer: c, showQuestion: d, currentTeam: e, timer: f};
-	});
-var _user$project$Main$Answered = {ctor: 'Answered'};
-var _user$project$Main$RanOut = {ctor: 'RanOut'};
-var _user$project$Main$Done = function (a) {
-	return {ctor: 'Done', _0: a};
-};
-var _user$project$Main$Timing = function (a) {
-	return {ctor: 'Timing', _0: a};
-};
-var _user$project$Main$initModel = function () {
-	var teams = _elm_lang$core$Native_List.fromArray(
-		[
-			{
-			ctor: '_Tuple2',
-			_0: 0,
-			_1: {name: 'Boys', score: 0}
-		},
-			{
-			ctor: '_Tuple2',
-			_0: 1,
-			_1: {name: 'Girls', score: 0}
-		}
-		]);
-	var columns = _elm_lang$core$Native_List.fromArray(
-		[
-			{
-			ctor: '_Tuple2',
-			_0: 0,
-			_1: {
-				answers: _elm_lang$core$Native_List.fromArray(
-					[
-						{
-						ctor: '_Tuple2',
-						_0: 0,
-						_1: {answer: 'I broke my bow then made a new one without loosing faith.', hint: '1 nephi', question: 'Who is Nephi?', context: '1 nephi', points: 100, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 1,
-						_1: {answer: 'the game im not making 0.1', hint: 'hint', question: 'dont know anything 0.1', context: '', points: 200, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 2,
-						_1: {answer: 'the game im not making 0.2', hint: 'hint', question: 'dont know anything 0.2', context: '', points: 300, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 3,
-						_1: {answer: 'the game im not making 0.3', hint: 'hint', question: 'dont know anything 0.3', context: '', points: 400, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 4,
-						_1: {answer: 'the game im not making 0.4', hint: 'hint', question: 'dont know anything 0.4', context: '', points: 500, show: true}
-					}
-					]),
-				label: 'Nephites'
-			}
-		},
-			{
-			ctor: '_Tuple2',
-			_0: 1,
-			_1: {
-				answers: _elm_lang$core$Native_List.fromArray(
-					[
-						{
-						ctor: '_Tuple2',
-						_0: 0,
-						_1: {answer: 'the game im not making 1.0', hint: 'hint', question: 'dont know anything 1.0', context: '', points: 100, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 1,
-						_1: {answer: 'the game im not making 1.1', hint: 'hint', question: 'dont know anything 1.1', context: '', points: 200, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 2,
-						_1: {answer: 'the game im not making 1.2', hint: 'hint', question: 'dont know anything 1.2', context: '', points: 300, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 3,
-						_1: {answer: 'the game im not making 1.3', hint: 'hint', question: 'dont know anything 1.3', context: '', points: 400, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 4,
-						_1: {answer: 'the game im not making 1.4', hint: 'hint', question: 'dont know anything 1.4', context: '', points: 500, show: true}
-					}
-					]),
-				label: 'Lamanites'
-			}
-		},
-			{
-			ctor: '_Tuple2',
-			_0: 2,
-			_1: {
-				answers: _elm_lang$core$Native_List.fromArray(
-					[
-						{
-						ctor: '_Tuple2',
-						_0: 0,
-						_1: {answer: 'the game im not making 2.0', hint: 'hint', question: 'dont know anything 2.0', context: '', points: 100, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 1,
-						_1: {answer: 'the game im not making 2.1', hint: 'hint', question: 'dont know anything 2.1', context: '', points: 200, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 2,
-						_1: {answer: 'the game im not making 2.2', hint: 'hint', question: 'dont know anything 2.2', context: '', points: 300, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 3,
-						_1: {answer: 'the game im not making 2.3', hint: 'hint', question: 'dont know anything 2.3', context: '', points: 400, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 4,
-						_1: {answer: 'the game im not making 2.4', hint: 'hint', question: 'dont know anything 2.4', context: '', points: 500, show: true}
-					}
-					]),
-				label: 'Batman'
-			}
-		},
-			{
-			ctor: '_Tuple2',
-			_0: 3,
-			_1: {
-				answers: _elm_lang$core$Native_List.fromArray(
-					[
-						{
-						ctor: '_Tuple2',
-						_0: 0,
-						_1: {answer: 'the game im not making 3.0', hint: 'hint', question: 'dont know anything 3.0', context: '', points: 100, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 1,
-						_1: {answer: 'the game im not making 3.1', hint: 'hint', question: 'dont know anything 3.1', context: '', points: 200, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 2,
-						_1: {answer: 'the game im not making 3.2', hint: 'hint', question: 'dont know anything 3.2', context: '', points: 300, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 3,
-						_1: {answer: 'the game im not making 3.3', hint: 'hint', question: 'dont know anything 3.3', context: '', points: 400, show: true}
-					},
-						{
-						ctor: '_Tuple2',
-						_0: 4,
-						_1: {answer: 'the game im not making 3.4', hint: 'hint', question: 'dont know anything 3.4', context: '', points: 500, show: true}
-					}
-					]),
-				label: 'Free'
-			}
-		}
-		]);
-	return A2(
-		_elm_lang$core$Platform_Cmd_ops['!'],
-		{
-			columns: columns,
-			teams: teams,
-			displayAnswer: _elm_lang$core$Maybe$Nothing,
-			showQuestion: false,
-			currentTeam: 0,
-			timer: _user$project$Main$Timing(_elm_lang$core$Time$second * 0)
-		},
-		_elm_lang$core$Native_List.fromArray(
-			[]));
-}();
-var _user$project$Main$update = F2(
-	function (msg, model) {
-		var _p4 = msg;
-		switch (_p4.ctor) {
-			case 'NoOp':
-				return A2(
-					_elm_lang$core$Platform_Cmd_ops['!'],
-					model,
-					_elm_lang$core$Native_List.fromArray(
-						[]));
-			case 'ShowAnswer':
-				return A2(
-					_elm_lang$core$Platform_Cmd_ops['!'],
-					_elm_lang$core$Native_Utils.update(
-						model,
-						{
-							displayAnswer: _elm_lang$core$Maybe$Just(
-								{ctor: '_Tuple3', _0: _p4._0, _1: _p4._1, _2: _p4._2}),
-							timer: _user$project$Main$Timing(_elm_lang$core$Time$second * 60)
-						}),
-					_elm_lang$core$Native_List.fromArray(
-						[]));
-			case 'ShowQuestion':
-				var _p5 = model.timer;
-				if ((_p5.ctor === 'Done') && (_p5._0.ctor === 'RanOut')) {
-					return A2(
-						_elm_lang$core$Platform_Cmd_ops['!'],
-						_elm_lang$core$Native_Utils.update(
-							model,
-							{
-								showQuestion: true,
-								timer: _user$project$Main$Done(_user$project$Main$RanOut)
-							}),
-						_elm_lang$core$Native_List.fromArray(
-							[]));
-				} else {
-					return A2(
-						_elm_lang$core$Platform_Cmd_ops['!'],
-						_elm_lang$core$Native_Utils.update(
-							model,
-							{
-								showQuestion: true,
-								timer: _user$project$Main$Done(_user$project$Main$Answered)
-							}),
-						_elm_lang$core$Native_List.fromArray(
-							[]));
-				}
-			case 'RecordResponse':
-				var modAns = function (_p6) {
-					var _p7 = _p6;
-					var _p9 = _p7._0;
-					var _p8 = _p7._1;
-					return _elm_lang$core$Native_Utils.eq(_p9, _p4._2) ? {
-						ctor: '_Tuple2',
-						_0: _p9,
-						_1: _elm_lang$core$Native_Utils.update(
-							_p8,
-							{show: false})
-					} : {ctor: '_Tuple2', _0: _p9, _1: _p8};
-				};
-				var modCol = function (_p10) {
-					var _p11 = _p10;
-					var _p13 = _p11._0;
-					var _p12 = _p11._1;
-					if (_elm_lang$core$Native_Utils.eq(_p13, _p4._1)) {
-						var c$ = _elm_lang$core$Native_Utils.update(
-							_p12,
-							{
-								answers: A2(_elm_lang$core$List$map, modAns, _p12.answers)
-							});
-						return {ctor: '_Tuple2', _0: _p13, _1: c$};
-					} else {
-						return {ctor: '_Tuple2', _0: _p13, _1: _p12};
-					}
-				};
-				var columns$ = A2(_elm_lang$core$List$map, modCol, model.columns);
-				var teamsWithPoints = A2(
-					_elm_lang$core$List$map,
-					function (_p14) {
-						var _p15 = _p14;
-						var _p17 = _p15._1;
-						var _p16 = _p15._0;
-						return _elm_lang$core$Native_Utils.eq(_p16, model.currentTeam) ? {
-							ctor: '_Tuple2',
-							_0: _p16,
-							_1: _elm_lang$core$Native_Utils.update(
-								_p17,
-								{score: _p17.score + _p4._0.points})
-						} : {ctor: '_Tuple2', _0: _p16, _1: _p17};
-					},
-					model.teams);
-				var maxTeams = _elm_lang$core$List$length(model.teams);
-				var currentTeam$ = _elm_lang$core$Native_Utils.eq(model.currentTeam + 1, maxTeams) ? 0 : (model.currentTeam + 1);
-				var _p18 = _p4._3;
-				if (_p18.ctor === 'Right') {
-					return A2(
-						_elm_lang$core$Platform_Cmd_ops['!'],
-						_elm_lang$core$Native_Utils.update(
-							model,
-							{showQuestion: false, displayAnswer: _elm_lang$core$Maybe$Nothing, columns: columns$, currentTeam: currentTeam$, teams: teamsWithPoints}),
-						_elm_lang$core$Native_List.fromArray(
-							[]));
-				} else {
-					return A2(
-						_elm_lang$core$Platform_Cmd_ops['!'],
-						_elm_lang$core$Native_Utils.update(
-							model,
-							{showQuestion: false, displayAnswer: _elm_lang$core$Maybe$Nothing, columns: columns$, currentTeam: currentTeam$}),
-						_elm_lang$core$Native_List.fromArray(
-							[]));
-				}
-			default:
-				var _p19 = model.timer;
-				if (_p19.ctor === 'Timing') {
-					var _p20 = _p19._0;
-					return (_elm_lang$core$Native_Utils.cmp(_p20, _elm_lang$core$Time$second * 0) > 0) ? A2(
-						_elm_lang$core$Platform_Cmd_ops['!'],
-						_elm_lang$core$Native_Utils.update(
-							model,
-							{
-								timer: _user$project$Main$Timing(_p20 - _elm_lang$core$Time$second)
-							}),
-						_elm_lang$core$Native_List.fromArray(
-							[])) : A2(
-						_elm_lang$core$Platform_Cmd_ops['!'],
-						_elm_lang$core$Native_Utils.update(
-							model,
-							{
-								timer: _user$project$Main$Done(_user$project$Main$RanOut)
-							}),
-						_elm_lang$core$Native_List.fromArray(
-							[]));
-				} else {
-					return A2(
-						_elm_lang$core$Platform_Cmd_ops['!'],
-						model,
-						_elm_lang$core$Native_List.fromArray(
-							[]));
-				}
-		}
-	});
-var _user$project$Main$Wrong = {ctor: 'Wrong'};
-var _user$project$Main$Right = {ctor: 'Right'};
-var _user$project$Main$HeartBeat = function (a) {
-	return {ctor: 'HeartBeat', _0: a};
-};
-var _user$project$Main$heartbeat = function (model) {
-	return A2(_elm_lang$core$Time$every, _elm_lang$core$Time$second, _user$project$Main$HeartBeat);
-};
-var _user$project$Main$ShowQuestion = {ctor: 'ShowQuestion'};
-var _user$project$Main$RecordResponse = F4(
-	function (a, b, c, d) {
-		return {ctor: 'RecordResponse', _0: a, _1: b, _2: c, _3: d};
-	});
-var _user$project$Main$ShowAnswer = F3(
-	function (a, b, c) {
-		return {ctor: 'ShowAnswer', _0: a, _1: b, _2: c};
-	});
 var _user$project$Main$viewColumns = function (columns) {
-	var colToHtml = function (_p21) {
-		var _p22 = _p21;
-		var _p26 = _p22._1;
-		var answerToHtml = function (_p23) {
-			var _p24 = _p23;
-			var _p25 = _p24._1;
-			return _p25.show ? A2(
+	var colToHtml = function (_p3) {
+		var _p4 = _p3;
+		var _p8 = _p4._1;
+		var answerToHtml = function (_p5) {
+			var _p6 = _p5;
+			var _p7 = _p6._1;
+			return _p7.show ? A2(
 				_elm_lang$html$Html$li,
 				_elm_lang$core$Native_List.fromArray(
 					[
 						_elm_lang$html$Html_Events$onClick(
-						A3(_user$project$Main$ShowAnswer, _p25, _p22._0, _p24._0)),
+						A3(_user$project$Jeopardy_Types$ShowAnswer, _p7, _p4._0, _p6._0)),
 						_elm_lang$html$Html_Attributes$class('answer')
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
 						_elm_lang$html$Html$text(
-						_elm_lang$core$Basics$toString(_p25.points))
+						_elm_lang$core$Basics$toString(_p7.points))
 					])) : A2(
 				_elm_lang$html$Html$li,
 				_elm_lang$core$Native_List.fromArray(
@@ -8805,10 +8688,10 @@ var _user$project$Main$viewColumns = function (columns) {
 				_elm_lang$core$Native_List.fromArray(
 					[
 						_elm_lang$html$Html$text(
-						_elm_lang$core$Basics$toString(_p25.points))
+						_elm_lang$core$Basics$toString(_p7.points))
 					]));
 		};
-		var answers = A2(_elm_lang$core$List$map, answerToHtml, _p26.answers);
+		var answers = A2(_elm_lang$core$List$map, answerToHtml, _p8.answers);
 		return A2(
 			_elm_lang$html$Html$li,
 			_elm_lang$core$Native_List.fromArray(
@@ -8826,9 +8709,7 @@ var _user$project$Main$viewColumns = function (columns) {
 							_elm_lang$core$Native_List.fromArray(
 								[]),
 							_elm_lang$core$Native_List.fromArray(
-								[
-									_elm_lang$html$Html$text(_p26.label)
-								])),
+								[_p8.label])),
 							A2(
 							_elm_lang$html$Html$ul,
 							_elm_lang$core$Native_List.fromArray(
@@ -8846,13 +8727,62 @@ var _user$project$Main$viewColumns = function (columns) {
 			]),
 		cols);
 };
+var _user$project$Main$viewTimer = function (model) {
+	var _p9 = model.timer;
+	if (_p9.ctor === 'Timing') {
+		var _p10 = _p9._0;
+		var minutes = _elm_lang$core$Basics$toString(
+			_elm_lang$core$Basics$floor(
+				_elm_lang$core$Time$inMinutes(_p10)));
+		var seconds = function (s) {
+			return (_elm_lang$core$Native_Utils.cmp(s, 10) < 0) ? A2(
+				_elm_lang$core$Basics_ops['++'],
+				'0',
+				_elm_lang$core$Basics$toString(s)) : _elm_lang$core$Basics$toString(s);
+		}(
+			A3(
+				_elm_lang$core$Basics$flip,
+				F2(
+					function (x, y) {
+						return A2(_elm_lang$core$Basics_ops['%'], x, y);
+					}),
+				60,
+				_elm_lang$core$Basics$floor(
+					_elm_lang$core$Time$inSeconds(_p10))));
+		return A2(
+			_elm_lang$html$Html$div,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$id('timer')
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html$text(
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						minutes,
+						A2(_elm_lang$core$Basics_ops['++'], ':', seconds)))
+				]));
+	} else {
+		return A2(
+			_elm_lang$html$Html$div,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$id('timer')
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html$text('... ran out of time.')
+				]));
+	}
+};
 var _user$project$Main$view = function (model) {
 	var answer = F3(
 		function (ans, cId, aId) {
 			var showQuestion = function () {
 				var buttons = function () {
-					var _p27 = model.timer;
-					if ((_p27.ctor === 'Done') && (_p27._0.ctor === 'RanOut')) {
+					var _p11 = model.timer;
+					if ((_p11.ctor === 'Done') && (_p11._0.ctor === 'RanOut')) {
 						return _elm_lang$core$Native_List.fromArray(
 							[
 								A2(
@@ -8861,7 +8791,7 @@ var _user$project$Main$view = function (model) {
 									[
 										_elm_lang$html$Html_Attributes$type$('button'),
 										_elm_lang$html$Html_Events$onClick(
-										A4(_user$project$Main$RecordResponse, ans, cId, aId, _user$project$Main$Wrong))
+										A4(_user$project$Jeopardy_Types$RecordResponse, ans, cId, aId, _user$project$Jeopardy_Types$Wrong))
 									]),
 								_elm_lang$core$Native_List.fromArray(
 									[
@@ -8877,7 +8807,7 @@ var _user$project$Main$view = function (model) {
 									[
 										_elm_lang$html$Html_Attributes$type$('button'),
 										_elm_lang$html$Html_Events$onClick(
-										A4(_user$project$Main$RecordResponse, ans, cId, aId, _user$project$Main$Right))
+										A4(_user$project$Jeopardy_Types$RecordResponse, ans, cId, aId, _user$project$Jeopardy_Types$Right))
 									]),
 								_elm_lang$core$Native_List.fromArray(
 									[
@@ -8889,7 +8819,7 @@ var _user$project$Main$view = function (model) {
 									[
 										_elm_lang$html$Html_Attributes$type$('button'),
 										_elm_lang$html$Html_Events$onClick(
-										A4(_user$project$Main$RecordResponse, ans, cId, aId, _user$project$Main$Wrong))
+										A4(_user$project$Jeopardy_Types$RecordResponse, ans, cId, aId, _user$project$Jeopardy_Types$Wrong))
 									]),
 								_elm_lang$core$Native_List.fromArray(
 									[
@@ -8915,7 +8845,14 @@ var _user$project$Main$view = function (model) {
 									[]),
 								_elm_lang$core$Native_List.fromArray(
 									[])),
-								_elm_lang$html$Html$text(ans.context),
+								A2(
+								_elm_lang$html$Html$i,
+								_elm_lang$core$Native_List.fromArray(
+									[]),
+								_elm_lang$core$Native_List.fromArray(
+									[
+										_elm_lang$html$Html$text(ans.context)
+									])),
 								A2(
 								_elm_lang$html$Html$br,
 								_elm_lang$core$Native_List.fromArray(
@@ -8924,6 +8861,14 @@ var _user$project$Main$view = function (model) {
 									[]))
 							]),
 						buttons));
+			}();
+			var hint$ = function () {
+				var _p12 = model.timer;
+				if (_p12.ctor === 'Timing') {
+					return (_elm_lang$core$Native_Utils.cmp(_p12._0, _elm_lang$core$Time$minute * 3) < 0) ? ans.hint : '';
+				} else {
+					return '';
+				}
 			}();
 			var showAnswer = A2(
 				_elm_lang$html$Html$div,
@@ -8941,11 +8886,25 @@ var _user$project$Main$view = function (model) {
 						_elm_lang$core$Native_List.fromArray(
 							[])),
 						A2(
+						_elm_lang$html$Html$i,
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text(hint$)
+							])),
+						A2(
+						_elm_lang$html$Html$br,
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[])),
+						A2(
 						_elm_lang$html$Html$button,
 						_elm_lang$core$Native_List.fromArray(
 							[
 								_elm_lang$html$Html_Attributes$type$('button'),
-								_elm_lang$html$Html_Events$onClick(_user$project$Main$ShowQuestion)
+								_elm_lang$html$Html_Events$onClick(_user$project$Jeopardy_Types$ShowQuestion)
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
@@ -8972,15 +8931,15 @@ var _user$project$Main$view = function (model) {
 				_user$project$Main$viewColumns(model.columns),
 				A2(_user$project$Main$viewTeams, model.currentTeam, model.teams)
 			]));
-	var _p28 = model.displayAnswer;
-	if (_p28.ctor === 'Just') {
+	var _p13 = model.displayAnswer;
+	if (_p13.ctor === 'Just') {
 		return A2(
 			_elm_lang$html$Html$div,
 			_elm_lang$core$Native_List.fromArray(
 				[]),
 			_elm_lang$core$Native_List.fromArray(
 				[
-					A3(answer, _p28._0._0, _p28._0._1, _p28._0._2)
+					A3(answer, _p13._0._0, _p13._0._1, _p13._0._2)
 				]));
 	} else {
 		return A2(
@@ -8991,11 +8950,151 @@ var _user$project$Main$view = function (model) {
 				[grid]));
 	}
 };
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		var _p14 = msg;
+		switch (_p14.ctor) {
+			case 'NoOp':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					model,
+					_elm_lang$core$Native_List.fromArray(
+						[]));
+			case 'ShowAnswer':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							displayAnswer: _elm_lang$core$Maybe$Just(
+								{ctor: '_Tuple3', _0: _p14._0, _1: _p14._1, _2: _p14._2}),
+							timer: _user$project$Jeopardy_Types$Timing(_elm_lang$core$Time$minute * 4)
+						}),
+					_elm_lang$core$Native_List.fromArray(
+						[]));
+			case 'ShowQuestion':
+				var _p15 = model.timer;
+				if ((_p15.ctor === 'Done') && (_p15._0.ctor === 'RanOut')) {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								showQuestion: true,
+								timer: _user$project$Jeopardy_Types$Done(_user$project$Jeopardy_Types$RanOut)
+							}),
+						_elm_lang$core$Native_List.fromArray(
+							[]));
+				} else {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								showQuestion: true,
+								timer: _user$project$Jeopardy_Types$Done(_user$project$Jeopardy_Types$Answered)
+							}),
+						_elm_lang$core$Native_List.fromArray(
+							[]));
+				}
+			case 'RecordResponse':
+				var modAns = function (_p16) {
+					var _p17 = _p16;
+					var _p19 = _p17._0;
+					var _p18 = _p17._1;
+					return _elm_lang$core$Native_Utils.eq(_p19, _p14._2) ? {
+						ctor: '_Tuple2',
+						_0: _p19,
+						_1: _elm_lang$core$Native_Utils.update(
+							_p18,
+							{show: false})
+					} : {ctor: '_Tuple2', _0: _p19, _1: _p18};
+				};
+				var modCol = function (_p20) {
+					var _p21 = _p20;
+					var _p23 = _p21._0;
+					var _p22 = _p21._1;
+					if (_elm_lang$core$Native_Utils.eq(_p23, _p14._1)) {
+						var c$ = _elm_lang$core$Native_Utils.update(
+							_p22,
+							{
+								answers: A2(_elm_lang$core$List$map, modAns, _p22.answers)
+							});
+						return {ctor: '_Tuple2', _0: _p23, _1: c$};
+					} else {
+						return {ctor: '_Tuple2', _0: _p23, _1: _p22};
+					}
+				};
+				var columns$ = A2(_elm_lang$core$List$map, modCol, model.columns);
+				var teamsWithPoints = A2(
+					_elm_lang$core$List$map,
+					function (_p24) {
+						var _p25 = _p24;
+						var _p27 = _p25._1;
+						var _p26 = _p25._0;
+						return _elm_lang$core$Native_Utils.eq(_p26, model.currentTeam) ? {
+							ctor: '_Tuple2',
+							_0: _p26,
+							_1: _elm_lang$core$Native_Utils.update(
+								_p27,
+								{score: _p27.score + _p14._0.points})
+						} : {ctor: '_Tuple2', _0: _p26, _1: _p27};
+					},
+					model.teams);
+				var maxTeams = _elm_lang$core$List$length(model.teams);
+				var currentTeam$ = _elm_lang$core$Native_Utils.eq(model.currentTeam + 1, maxTeams) ? 0 : (model.currentTeam + 1);
+				var _p28 = _p14._3;
+				if (_p28.ctor === 'Right') {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{showQuestion: false, displayAnswer: _elm_lang$core$Maybe$Nothing, columns: columns$, currentTeam: currentTeam$, teams: teamsWithPoints}),
+						_elm_lang$core$Native_List.fromArray(
+							[]));
+				} else {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{showQuestion: false, displayAnswer: _elm_lang$core$Maybe$Nothing, columns: columns$, currentTeam: currentTeam$}),
+						_elm_lang$core$Native_List.fromArray(
+							[]));
+				}
+			default:
+				var _p29 = model.timer;
+				if (_p29.ctor === 'Timing') {
+					var _p30 = _p29._0;
+					return (_elm_lang$core$Native_Utils.cmp(_p30, _elm_lang$core$Time$second * 0) > 0) ? A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								timer: _user$project$Jeopardy_Types$Timing(_p30 - _elm_lang$core$Time$second)
+							}),
+						_elm_lang$core$Native_List.fromArray(
+							[])) : A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								timer: _user$project$Jeopardy_Types$Done(_user$project$Jeopardy_Types$RanOut)
+							}),
+						_elm_lang$core$Native_List.fromArray(
+							[]));
+				} else {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						model,
+						_elm_lang$core$Native_List.fromArray(
+							[]));
+				}
+		}
+	});
 var _user$project$Main$main = {
 	main: _elm_lang$html$Html_App$program(
-		{init: _user$project$Main$initModel, view: _user$project$Main$view, update: _user$project$Main$update, subscriptions: _user$project$Main$heartbeat})
+		{init: _user$project$Jeopardy_Init$initModel, view: _user$project$Main$view, update: _user$project$Main$update, subscriptions: _user$project$Main$heartbeat})
 };
-var _user$project$Main$NoOp = {ctor: 'NoOp'};
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
